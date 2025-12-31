@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trang Thông Tin Đơn Vị và Đăng Ký Thăm</title>
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+
+/* DIV nền cho trang thông tin */
+#background {
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  z-index: -1;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  color: #000;
+}
+
+header {
+  background: rgba(255,255,255,0.8);
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  color: #000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+header h1 {
+    font-size: 2rem;       
+    margin-bottom: 10px;
+    color: #007BFF;        
+}
+.login-btn {
+  position: fixed;
+  top: 0.5cm;
+  left: 0.5cm;
+  width: 3cm;
+  height: 2cm;
+  background: #003366;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 1001;
+  font-size: 1rem;      
+}
+.login-btn:hover { background: #0055aa; }
+
+section {
+  max-width: 900px;
+  margin: 100px auto 30px;
+  padding: 10px;
+}
+.card {
+  background: rgba(0, 33, 33, 0.4);
+  backdrop-filter: blur(15px);
+  padding: 25px;
+  margin: 20px 0;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+  color: #fff;
+}
+.card:hover {transform: translateY(-5px);}
+
+#gth h2,
+#anh h2,
+#qd h2 {
+  color: #F5F5DC;
+}
+
+p, ul {line-height:1.6; color: #fff;}
+ul li {margin-bottom:8px;}
+iframe {border-radius: 12px; width: 100%; height: 315px;}
+
+.image-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+.image-item {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.image-item img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  height: 150px;
+}
+.image-item p {
+  margin-top: 5px;
+  text-align: center;
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* Form đăng ký */
+.container {
+  max-width: 600px;
+  margin: 50px auto 50px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(173, 216, 230, 0.8));
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  color: #000;
+  border: 2px solid #1e90ff;
+}
+.container h2 {text-align:center; margin-bottom:25px; color:#003366;}
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #003366;
+}
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 2px solid #1e90ff;
+  background: rgba(255,255,255,0.7);
+  color: #000;
+  transition: all 0.3s ease;
+}
+input::placeholder {color: #555;}
+input:focus, select:focus {
+  outline: none;
+  border-color: #ff4500;
+  background: rgba(255,255,255,0.9);
+}
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background: #ff4500;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+button:hover {background: #ff6347; transform: translateY(-2px);}
+#status {text-align:center; margin-top:15px; font-weight:bold; color:#ff4500;}
+
+@media(max-width:600px){
+  header h1 {font-size:1.4rem;}
+  .card {padding:15px; margin:15px 10px;}
+  iframe {height:200px;}
+  .image-item {width:48%; margin-bottom:10px;}
+  .container {padding:20px; margin:80px 10px;}
+  input, select {padding:10px;}
+  button {padding:12px; font-size:14px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Nền trang thông tin -->
+<div id="background"></div>
+
+<header>
+<h1>Trang thông tin Lữ đoàn 71 – Quân đoàn 34 </h1>
+<button class="login-btn" onclick="window.location.href='login.html'">Đăng nhập quản lý</button>
+</header>
+
+<section>
+  <!-- Card Giới thiệu -->
+  <div class="card" id="gth">
+    <h2>Giới thiệu</h2>
+    <p>Lữ đoàn 71 – Quân đoàn 34 là đơn vị chủ lực trong đội hình chiến đấu của Quân đoàn, có nhiệm vụ huấn luyện, sẵn sàng chiến đấu, cơ động thực hiện các nhiệm vụ quốc phòng – an ninh và tham gia xử lý các tình huống khi có yêu cầu. Lữ đoàn luôn coi trọng công tác xây dựng đơn vị vững mạnh toàn diện, lấy huấn luyện làm trung tâm, rèn luyện kỷ luật làm nền tảng, không ngừng nâng cao trình độ, bản lĩnh và khả năng hiệp đồng của cán bộ, chiến sĩ. Trải qua quá trình xây dựng và trưởng thành, Lữ đoàn 71 đã kế thừa và phát huy truyền thống đoàn kết, chủ động, sáng tạo, vượt qua khó khăn, hoàn thành tốt và xuất sắc nhiều nhiệm vụ được giao. Đơn vị luôn giữ vững phẩm chất “Bộ đội Cụ Hồ”, góp phần quan trọng vào việc xây dựng Quân đoàn 34 ngày càng chính quy, tinh nhuệ, hiện đại</p>
+  </div>
+
+  <!-- Card Ảnh Đơn Vị -->
+  <div class="card" id="anh">
+    <h2>Ảnh Đơn Vị</h2>
+    <div class="image-row">
+      <div class="image-item"><img src="anh1.jpg" alt="Ảnh 1"><p>Thủ trưởng động viên</p></div>
+      <div class="image-item"><img src="anh2.jpg" alt="Ảnh 2"><p>Phối hợp hiệp đồng</p></div>
+      <div class="image-item"><img src="anh3.jpg" alt="Ảnh 3"><p>Đại hội LCĐ Tiểu đoàn 12 nhiệm kỳ 2025-2030</p></div>
+      <div class="image-item"><img src="anh4.jpg" alt="Ảnh 4"><p>Công tác dân vận</p></div>
+      <div class="image-item"><img src="anh5.jpg" alt="Ảnh 5"><p>Hoạt động văn hoác văn nghệ</p></div>
+      <div class="image-item"><img src="anh6.jpg" alt="Ảnh 6"><p>Công tác kết nghĩa</p></div>
+    </div>
+  </div>
+
+ <!-- Card Trưng bày sáng kiến, mô hình học cụ-->
+  <div class="card" id="anh">
+    <h2>Trưng bày sáng kiến, mô hình học cụ</h2>
+    <div class="image-row">
+      <div class="image-item"><img src="anh7.jpg" alt="Ảnh 7"><p>Mô hình học cụ</p></div>
+      <div class="image-item"><img src="anh8.jpg" alt="Ảnh 8"><p>Mô hình nhận diện máy bay</p></div>
+      <div class="image-item"><img src="anh9.jpg" alt="Ảnh 9"><p>Mô hình CTĐ, CTCT</p></div>
+      <div class="image-item"><img src="anh10.jpg" alt="Ảnh 10"><p>Vật chất huấn luyện</p></div>
+      <div class="image-item"><img src="anh15.jpg" alt="Ảnh 14"><p>Vật chất SSCĐ</p></div>
+      <div class="image-item"><img src="anh12.jpg" alt="Ảnh 12"><p>Vật chất SSCĐ</p></div>
+    </div>
+  </div>
+
+  <!-- Card Quy định thăm gặp -->
+  <div class="card" id="qd">
+    <h2>Quy định thăm gặp</h2>
+    <ul>
+      <li>Mang CCCD/định danh hợp lệ.</li>
+      <li>Tuân thủ hướng dẫn của cán bộ trực.</li>
+      <li>Không chụp ảnh tại khu vực cấm.</li>
+    </ul>
+  </div>
+
+<!-- Form đăng ký thăm -->
+<div class="container">
+  <h2>Đăng ký vào thăm quân nhân</h2>
+  <form id="visitForm">
+    <label>Họ tên khách:</label>
+    <input type="text" id="hoten" placeholder="Nhập họ tên" required />
+    <label>Số CCCD:</label>
+    <input type="text" id="cccd" placeholder="Nhập CCCD" required />
+    <label>Mối quan hệ:</label>
+    <input type="text" id="quanhe" placeholder="Nhập quan hệ" required />
+    <label>Số lượng người lên thăm:</label>
+    <input type="number" id="soluong" placeholder="Nhập số lượng" required min="1" />
+    <label>Phương tiện:</label>
+    <input type="text" id="phuongtien" placeholder="Nhập Phương tiện" required />
+    <label>Tên quân nhân muốn thăm:</label>
+    <input type="text" id="quannhan" placeholder="Nhập tên quân nhân" required />
+    <label>Số điện thoại:</label>
+    <input type="text" id="sdt" placeholder="Nhập số điện thoại" required />
+    <label>Tỉnh/Thành phố:</label>
+    <input type="text" id="tinhthanh" placeholder="Nhập tỉnh/thành phố" required />
+  <label>Đơn vị:</label>
+  <input type="text" id="donvi" placeholder="Nhập đơn vị" required />
+  
+  <button type="submit">Gửi đăng ký</button>
+</form>
+<p id="status"></p>
+</div>
+
+<script>
+document.getElementById("visitForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const statusEl = document.getElementById("status");
+
+  const data = {
+    hoten: document.getElementById("hoten").value,
+    cccd: document.getElementById("cccd").value,
+    quanhe: document.getElementById("quanhe").value,
+	soluong: Number(document.getElementById("soluong").value),
+	phuongtien: document.getElementById("phuongtien").value,
+    quannhan: document.getElementById("quannhan").value,
+    sdt: document.getElementById("sdt").value,
+    tinhthanhpho: document.getElementById("tinhthanh").value,
+    donvi: document.getElementById("donvi").value,
+    trangthai: "Chờ duyệt",
+    thoigian: new Date().toLocaleString()
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycby4gy9tIvVy-sVWQpcEiED7-OmybdldFugT7T2OhwfolJYThAQ9dr4v4rw9f4F_G6lt/exec", {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    statusEl.innerHTML = "Đăng ký thành công!";
+    document.getElementById("visitForm").reset();
+    setTimeout(() => { statusEl.innerHTML = ""; }, 4000);
+  })
+  .catch(err => {
+    console.error(err);
+    statusEl.innerHTML = "Gửi thất bại, vui lòng thử lại!";
+    setTimeout(() => { statusEl.innerHTML = ""; }, 4000);
+  });
+});
+</script>
+</body>
+</html>
+
